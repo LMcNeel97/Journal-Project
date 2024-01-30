@@ -11,7 +11,7 @@ try {
 //Assign account_id variable using Session[account_id]
 $account_id = $_SESSION['Account_ID'];
 
-$journal_query = "SELECT journal_name, description FROM journals WHERE \"Account_ID\" = ?";
+$journal_query = "SELECT journal_id, journal_name, description FROM journals WHERE \"Account_ID\" = ?";
 $stmt_fetch_journals = $pdo->prepare($journal_query);
 $stmt_fetch_journals->execute([$account_id]);
 $journals = $stmt_fetch_journals->fetchAll(PDO::FETCH_ASSOC);

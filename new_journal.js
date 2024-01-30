@@ -16,11 +16,14 @@ $(document).ready(function() {
             success: function(data) {
                 if (data.success) {
                     //If the server responds with success
-                    alert("Journal added successfully!");
+                    $('#success-toast').toast('show');
                     
                     //Clear the form
                     $('#journal_name').val('');
                     $('#description').val('');
+
+                    // After successfully adding the journal, Update the table
+                    populateTable();
 
                 } else {
                     //Handle Errors:

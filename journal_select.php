@@ -10,6 +10,17 @@ print_r($_SESSION);
 <?php include 'gen_header.php'; ?>
 
 <body>
+    <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+        <div id="success-toast" class="toast hide" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header">
+                <strong class="me-auto">Success!</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body">
+                Journal added successfully
+            </div>
+        </div>
+    </div>
     <div class="container">
         <div class="row">
             <div class="col-4">
@@ -46,6 +57,7 @@ print_r($_SESSION);
       <th scope="col">#</th>
       <th scope="col">Journal Name</th>
       <th scope="col">Description</th>
+      <th scope="col">Actions</th>
     </tr>
   </thead>
   <tbody class="table-group-divider">

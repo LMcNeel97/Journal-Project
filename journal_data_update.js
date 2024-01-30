@@ -25,6 +25,7 @@ console.log("Script loaded.");
                         '<th scope="row">' + (index + 1) + '</th>' +
                         '<td>' + entry.journal_name + '</td>' +
                         '<td>' + entry.description + '</td>' +
+                        '<td>' + entry.journal_id + '</td>' +
                         '</tr>'
                     );
                 });
