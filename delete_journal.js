@@ -8,7 +8,7 @@ function deleteJournal(journal_id) {
         success: function(data) {
             if (data.success) {
                 // if the server responds with success
-                alert("Journal deleted successfully!");
+                $('#deleted-toast').toast('show');
                 populateTable(); //Refreshes table after successful delete event
             } else {
                 // Error Handling:

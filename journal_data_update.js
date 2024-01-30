@@ -32,10 +32,13 @@ console.log("Script loaded.");
                     row.append('<td>' + entry.description + '</td>');
 
                     // Create delete button
-                    var deleteButton = $('<button>', {
-                        text: 'Delete',
-                        class: 'btn btn-danger btn-sm', // Bootstrap button styling
-                        data: { journal_id: entry.journal_id, journal_name: entry.journal_name }, // Store the journal_id
+                    var deleteButton = $('<i>', {
+                        class: 'fa-solid fa-trash text-delete', // font awesome icon button styling
+                        'data-journal-id': entry.journal_id,
+                        'data-journal-name': entry.journal_name,
+                        title: 'Delete Journal', //Tooltip text
+                        'data-bs-toggle': 'tooltip',
+                        'data-bs-placement': 'top',
                         click: function() {
                             // Delete button event handling
                             var journal_id = $(this).data('journal_id');
@@ -47,6 +50,9 @@ console.log("Script loaded.");
                             }
                         }
                     });
+
+                    // Initialize Bootstrap Tooltip
+                    deleteButton.tooltip();
 
                     // Add the delete button to the row
                     row.append($('<td>').append(deleteButton));
