@@ -36,7 +36,9 @@ $(document).ready(function() {
         });
 
         //Debug:Populate Table
-        console.log("Calling populateTable()");
+        if (debugMode) {
+            console.log("Calling populateTable()");
+        }
         // Trigger the table update function
         populateTable();
 

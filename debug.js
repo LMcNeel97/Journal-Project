@@ -1,0 +1,2 @@
+//DebugMode
+var debugMode = false

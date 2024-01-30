@@ -9,8 +9,9 @@ console.log("Script loaded.");
             success: function (data) {
 
                 //Debug: Received Data
-                console.log("Data Received:", data)
-
+                if(debugMode) {
+                    console.log("Data Received:", data)
+                }
                 //Clear existing table rows
                 $('#journal-table tbody').empty();
 
@@ -18,16 +19,40 @@ console.log("Script loaded.");
                 $.each(data, function(index, entry) {
 
                     //Debug: Process Entry
-                    console.log("Processing entry: ", entry); // Log the received data to the console
+                    if (debugMode) {
+                        console.log("Processing entry: ", entry); // Log the received data to the console
+                    }
 
-                    $('#journal-table tbody').append(
-                        '<tr>' +
-                        '<th scope="row">' + (index + 1) + '</th>' +
-                        '<td>' + entry.journal_name + '</td>' +
-                        '<td>' + entry.description + '</td>' +
-                        '<td>' + entry.journal_id + '</td>' +
-                        '</tr>'
-                    );
+                    // Create new Row
+                    var row = $('<tr>');
+
+                    // Add Table cells for journal_name, description, and the delete button
+                    row.append('<th scope="row">' + (index + 1) + '</th>');
+                    row.append('<td>' + entry.journal_name + '</td>');
+                    row.append('<td>' + entry.description + '</td>');
+
+                    // Create delete button
+                    var deleteButton = $('<button>', {
+                        text: 'Delete',
+                        class: 'btn btn-danger btn-sm', // Bootstrap button styling
+                        data: { journal_id: entry.journal_id, journal_name: entry.journal_name }, // Store the journal_id
+                        click: function() {
+                            // Delete button event handling
+                            var journal_id = $(this).data('journal_id');
+                            var journal_name = $(this).data('journal_name');
+
+                            // Confirm deletion with a dialog
+                            if (window.confirm('Are you sure you wish to delete "' + journal_name + '"?')) {
+                            deleteJournal(journal_id);
+                            }
+                        }
+                    });
+
+                    // Add the delete button to the row
+                    row.append($('<td>').append(deleteButton));
+
+                    // Add the row to the table body
+                    $('#journal-table tbody').append(row);
                 });
             },
             error: function (xhr, status, error) {

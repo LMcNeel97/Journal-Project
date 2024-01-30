@@ -71,6 +71,7 @@ print_r($_SESSION);
 
         
         <!-- Include your external JavaScript file -->
+        <script src="delete_journal.js"></script>
         <script src="journal_data_update.js"></script>
         <script src="new_journal.js"></script>
 </body>
