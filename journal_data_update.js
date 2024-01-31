@@ -40,9 +40,15 @@ console.log("Script loaded.");
                         'data-bs-toggle': 'tooltip',
                         'data-bs-placement': 'top',
                         click: function() {
+
+                            // Debug: Log the data attributes
+                            if (debugMode) {
+                                    console.log("Data Attributes:", $(this).data());
+                            }
+
                             // Delete button event handling
-                            var journal_id = $(this).data('journal_id');
-                            var journal_name = $(this).data('journal_name');
+                            var journal_id = $(this).data('journalId');
+                            var journal_name = $(this).data('journalName');
 
                             // Confirm deletion with a dialog
                             if (window.confirm('Are you sure you wish to delete "' + journal_name + '"?')) {
